@@ -14,7 +14,7 @@ environments:
         port: 3306
         charset: utf8
 
-    development:
+    test:
         adapter: mysql
         host: localhost
         name: phonebook2
