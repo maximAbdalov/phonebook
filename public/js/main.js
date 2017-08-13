@@ -1,6 +1,6 @@
 
-var contactUrl = "/phonebook/phonebook/users/ajax";
-var newContactUrl = "/phonebook/phonebook/users/new";
+var contactUrl = "/phonebook/users/ajax";
+var newContactUrl = "/phonebook/users/new";
 var waitMessage = "Пожалуйста подождите";
 var partialBlock = $('.partial');
 $(document).ready(function () {
