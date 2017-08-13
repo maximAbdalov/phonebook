@@ -1,0 +1,44 @@
+<?php
+/**
+ * @var \Phalcon\Mvc\View\Engine\Php $this
+ */
+?>
+
+<?php use Phalcon\Tag; ?>
+
+
+
+<div class="row">
+    <nav>
+        <ul class="pager">
+            <li class="next"><?php echo $this->tag->linkTo(["users/new", "Добавить контакт ", "class" => "new-item"]); ?></li>
+        </ul>
+    </nav>
+</div>
+
+<div class="page-header">
+    <h1>Список контактов</h1>
+</div>
+
+<?php echo $this->getContent(); ?>
+
+<div class="partial">
+	<?php
+	$this->partial('users/ajax');
+	?>
+</div>
+<!-- Modal for new-->
+<div id="new-form" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Новый контакт</h4>
+            </div>
+            <div class="modal-body neweditable">
+
+            </div>
+        </div>
+    </div>
+</div>

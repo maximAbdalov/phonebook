@@ -1,0 +1,70 @@
+<?php
+/**
+ * @var \Phalcon\Mvc\View\Engine\Php $this
+ */
+?>
+
+<div class="row">
+    <nav>
+        <ul class="pager">
+            <li class="previous"><?php echo $this->tag->linkTo(["users", "Back"]) ?></li>
+        </ul>
+    </nav>
+</div>
+
+
+<div class="page-header">
+    <h1>
+        Edit users
+    </h1>
+</div>
+<div id="ajax-load">
+<?php echo $this->getContent(); ?>
+
+<?php
+    echo $this->tag->form(
+        [
+            "users/save",
+            "autocomplete" => "off",
+            "class" => "form-horizontal edit-form"
+        ]
+    );
+?>
+
+<div class="form-group">
+    <label for="fieldFio" class="col-sm-2 control-label">Fio</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(["fio", "size" => 30, "class" => "form-control", "id" => "fieldFio",
+            "required" => true]) ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldNotes" class="col-sm-2 control-label">Notes</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(["notes", "size" => 30, "class" => "form-control", "id" => "fieldNotes", "required" => true]) ?>
+    </div>
+</div>
+
+    <div class="form-group">
+        <label for="fieldCreatedAt" class="col-sm-2 control-label">Номера телефонов</label>
+        <div class="col-sm-10">
+            <select name="phones[]" class="form-control selector" multiple>
+                <?php foreach ($phones as $phone):?>
+                    <option value="<?=$phone?>" selected><?=$phone?></option>
+                <?php endforeach;?>
+            </select>
+        </div>
+    </div>
+
+
+<?php echo $this->tag->hiddenField("id") ?>
+
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+        <?php echo $this->tag->submitButton(["Сохранить", "class" => "btn btn-default"]) ?>
+    </div>
+</div>
+
+<?php echo $this->tag->endForm(); ?>
+</div>

@@ -1,0 +1,65 @@
+<?php
+/**
+ * @var \Phalcon\Mvc\View\Engine\Php $this
+ */
+?>
+
+<div class="row">
+    <nav>
+        <ul class="pager">
+            <li class="previous"><?php echo $this->tag->linkTo(["users", "Go Back"]) ?></li>
+        </ul>
+    </nav>
+</div>
+
+<div class="page-header">
+    <h1>
+        Create users
+    </h1>
+</div>
+
+<div id="ajax-load">
+
+<?php echo $this->getContent(); ?>
+
+<?php
+    echo $this->tag->form(
+        [
+            "users/create",
+            "autocomplete" => "off",
+            "class" => "form-horizontal new-form"
+        ]
+    );
+?>
+
+<div class="form-group">
+    <label for="fieldFio" class="col-sm-2 control-label">Fio</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(["fio", "size" => 30, "class" => "form-control", "id" => "fieldFio", "required" => true]) ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldNotes" class="col-sm-2 control-label">Notes</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(["notes", "size" => 30, "class" => "form-control", "id" => "fieldNotes",
+			"required" => true]) ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldCreatedAt" class="col-sm-2 control-label">Номера телефонов</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->select(["phones[]", [], "class" => "form-control selector", "multiple" => true]) ?>
+    </div>
+</div>
+
+
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+        <?php echo $this->tag->submitButton(["Сохранить", "class" => "btn btn-default"]) ?>
+    </div>
+</div>
+
+<?php echo $this->tag->endForm(); ?>
+</div>
