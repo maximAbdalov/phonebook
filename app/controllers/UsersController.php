@@ -14,26 +14,7 @@ class UsersController extends ControllerBase
 	 */
 	public function indexAction()
 	{
-		$numberPage = $this->request->getQuery("page", "int");
-
-		$parameters = $this->persistent->parameters;
-		if (!is_array($parameters)) {
-			$parameters = [];
-		}
-		$parameters["order"] = "id";
-
-		$users = Users::find(['order' => 'updatet_at']);
-
-		if (!count($users))
-			$this->flash->notice("Контактов не найдено");
-
-		$paginator = new Paginator([
-			'data' => $users,
-			'limit' => self::ITEMS_ON_PAGE,
-			'page' => $numberPage
-		]);
-
-		$this->view->page = $paginator->getPaginate();
+		$this->view->page = $this->getList();
 	}
 
 
@@ -173,7 +154,7 @@ class UsersController extends ControllerBase
 	{
 		$numberPage = $this->request->getQuery("page", "int");
 
-		$users = Users::find(['order' => 'updatet_at']);
+		$users = Users::find(['order' => 'updatet_at DESC']);
 
 		if (!count($users))
 			$this->flash->notice("Контактов не найдено");
