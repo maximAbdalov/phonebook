@@ -9,8 +9,10 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <?php echo \Phalcon\Tag::stylesheetLink("css/select2.min.css"); ?>
         <?php echo \Phalcon\Tag::stylesheetLink("css/style.css"); ?>
+        {% if !request.isAjax() %}
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        {% endif %}
     </head>
     <body>
         <div class="container">

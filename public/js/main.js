@@ -53,20 +53,21 @@ function bindActions() {
         e.preventDefault();
         var url = $(this).attr('href');
         var editModal = $('.editable');
+        var newForm = $('#edit');
         waitingDialog.show(waitMessage);
         $(editModal).load(url + ' #ajax-load', function () {
             waitingDialog.hide();
-            $('#edit').modal('show');
+            $(newForm).modal('show');
             select2Init();
             $('form.edit-form').on('submit', function (e) {
                 e.preventDefault();
+                $(newForm).modal('hide');
                 $.ajax({
                     type: 'post',
                     url: $(this).attr('action'),
                     data: $('form.edit-form').serialize(),
-                    success: function () {
+                    success: function (res) {
                         updateContent();
-                        $('#edit').modal('hide');
                     }
                 });
 

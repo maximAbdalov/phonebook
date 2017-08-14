@@ -47,6 +47,7 @@ class UsersController extends ControllerBase
 	 * Edits a user
 	 *
 	 * @param string $id
+	 * @return bool
 	 */
 	public function editAction($id)
 	{
@@ -71,6 +72,7 @@ class UsersController extends ControllerBase
 
 	/**
 	 * Creates a new user
+	 * @return bool
 	 */
 	public function createAction()
 	{
@@ -100,7 +102,7 @@ class UsersController extends ControllerBase
 
 	/**
 	 * Saves a user edited
-	 *
+	 * @return bool
 	 */
 	public function saveAction()
 	{
@@ -139,6 +141,7 @@ class UsersController extends ControllerBase
 	 * Deletes a user
 	 *
 	 * @param string $id
+	 * @return bool
 	 */
 	public function deleteAction($id)
 	{
@@ -150,6 +153,10 @@ class UsersController extends ControllerBase
 		return false;
 	}
 
+	/**
+	 * Get list users with pagination
+	 * @return mixed
+	 */
 	private function getList()
 	{
 		$numberPage = $this->request->getQuery("page", "int");
